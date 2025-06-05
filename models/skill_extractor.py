@@ -1,7 +1,14 @@
 import re
 import spacy
+import subprocess
+import importlib.util
 
-nlp = spacy.load("en_core_web_sm")
+# Auto-download spaCy model if missing
+model_name = "en_core_web_sm"
+if importlib.util.find_spec(model_name) is None:
+    subprocess.run(["python", "-m", "spacy", "download", model_name])
+
+nlp = spacy.load(model_name)
 
 def extract_email(text):
     match = re.search(r'[\w\.-]+@[\w\.-]+', text)
