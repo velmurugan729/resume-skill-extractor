@@ -18,7 +18,9 @@ if uploaded_files:
         with open(path, "wb") as f:
             f.write(file.read())
 
-        text = extract_text_from_pdf(path)
+       if uploaded_file is not None:
+           text = extract_text_from_pdf(uploaded_file)
+ 
 
         resume_data = {
             "name": extract_name(text),
