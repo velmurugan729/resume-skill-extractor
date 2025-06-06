@@ -1,10 +1,7 @@
 import os
-from pydantic_settings import BaseSettings # type: ignore
 
-class Settings(BaseSettings):
-    llm_api_key: str = os.getenv("OPENAI_API_KEY", "")
-    
-    class Config:
-        env_file = ".env"
-
+class Settings:
+    def __init__(self):
+        self.llm_api_key = os.getenv("OPENAI_API_KEY", "")
+        
 settings = Settings()
