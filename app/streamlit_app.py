@@ -1,7 +1,7 @@
 import streamlit as st
 from pdf_parser import PDFParser
 from llm_parser import LLMParser
-from config import settings
+from .config import settings
 import tempfile
 import json
 import time
